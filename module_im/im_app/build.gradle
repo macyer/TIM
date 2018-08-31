@@ -1,0 +1,72 @@
+apply plugin: 'com.android.library'
+
+
+android {
+
+    signingConfigs{
+        release{
+            storeFile file("$System.env.KEYSTORE_PATH")
+            storePassword "$System.env.STOREPASS"
+            keyAlias "$System.env.ALIAS"
+            keyPassword "$System.env.KEYPASS"
+        }
+    }
+
+    packagingOptions{
+        exclude '*.apk'
+    }
+    dexOptions {
+        jumboMode true
+    }
+    lintOptions{
+        abortOnError false
+    }
+    buildTypes{
+        release{
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            ndk {
+                // 需要将 x86 架构过滤掉
+                abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+            }
+        }
+
+        debug {
+
+            ndk {
+                // 需要将 x86 架构过滤掉
+                abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+            }
+        }
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':module_im:presentation')
+    api project(':module_im:ui')
+    api 'com.android.support:support-v4:26.1.0'
+    api 'com.android.support:recyclerview-v7:26.1.0'
+    api 'com.github.bumptech.glide:glide:3.5.2'
+//    compile 'com.google.firebase:firebase-core:9.0.0'
+//    compile 'com.google.firebase:firebase-messaging:9.0.0'
+}
+
+
+//apply plugin: 'com.google.gms.google-services'
+
