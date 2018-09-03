@@ -1,6 +1,6 @@
 package com.tencent.qcloud.timchat.utils;
 
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 
 import java.text.SimpleDateFormat;
@@ -31,7 +31,7 @@ public class TimeUtil {
         calendar.set(Calendar.MINUTE, 59);
         if (calendar.before(inputTime)){
             //今天23:59在输入时间之前，解决一些时间误差，把当天时间显示到这里
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + MyApplication.getContext().getResources().getString(R.string.time_year)+"MM"+MyApplication.getContext().getResources().getString(R.string.time_month)+"dd"+MyApplication.getContext().getResources().getString(R.string.time_day));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + MyApp.getContext().getResources().getString(R.string.time_year)+"MM"+ MyApp.getContext().getResources().getString(R.string.time_month)+"dd"+ MyApp.getContext().getResources().getString(R.string.time_day));
             return sdf.format(currenTimeZone);
         }
         calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -44,15 +44,15 @@ public class TimeUtil {
         }
         calendar.add(Calendar.DAY_OF_MONTH,-1);
         if (calendar.before(inputTime)){
-            return MyApplication.getContext().getResources().getString(R.string.time_yesterday);
+            return MyApp.getContext().getResources().getString(R.string.time_yesterday);
         }else{
             calendar.set(Calendar.DAY_OF_MONTH, 1);
             calendar.set(Calendar.MONTH, Calendar.JANUARY);
             if (calendar.before(inputTime)){
-                SimpleDateFormat sdf = new SimpleDateFormat("M"+MyApplication.getContext().getResources().getString(R.string.time_month)+"d"+MyApplication.getContext().getResources().getString(R.string.time_day));
+                SimpleDateFormat sdf = new SimpleDateFormat("M"+ MyApp.getContext().getResources().getString(R.string.time_month)+"d"+ MyApp.getContext().getResources().getString(R.string.time_day));
                 return sdf.format(currenTimeZone);
             }else{
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + MyApplication.getContext().getResources().getString(R.string.time_year)+"MM"+MyApplication.getContext().getResources().getString(R.string.time_month)+"dd"+MyApplication.getContext().getResources().getString(R.string.time_day));
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + MyApp.getContext().getResources().getString(R.string.time_year)+"MM"+ MyApp.getContext().getResources().getString(R.string.time_month)+"dd"+ MyApp.getContext().getResources().getString(R.string.time_day));
                 return sdf.format(currenTimeZone);
 
             }
@@ -74,7 +74,7 @@ public class TimeUtil {
         Calendar calendar = Calendar.getInstance();
         if (!calendar.after(inputTime)){
             //当前时间在输入时间之前
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + MyApplication.getContext().getResources().getString(R.string.time_year)+"MM"+MyApplication.getContext().getResources().getString(R.string.time_month)+"dd"+MyApplication.getContext().getResources().getString(R.string.time_day));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy" + MyApp.getContext().getResources().getString(R.string.time_year)+"MM"+ MyApp.getContext().getResources().getString(R.string.time_month)+"dd"+ MyApp.getContext().getResources().getString(R.string.time_day));
             return sdf.format(currenTimeZone);
         }
         calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -88,15 +88,15 @@ public class TimeUtil {
         calendar.add(Calendar.DAY_OF_MONTH,-1);
         if (calendar.before(inputTime)){
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            return MyApplication.getContext().getResources().getString(R.string.time_yesterday)+" "+sdf.format(currenTimeZone);
+            return MyApp.getContext().getResources().getString(R.string.time_yesterday)+" "+sdf.format(currenTimeZone);
         }else{
             calendar.set(Calendar.DAY_OF_MONTH, 1);
             calendar.set(Calendar.MONTH, Calendar.JANUARY);
             if (calendar.before(inputTime)){
-                SimpleDateFormat sdf = new SimpleDateFormat("M"+MyApplication.getContext().getResources().getString(R.string.time_month)+"d"+MyApplication.getContext().getResources().getString(R.string.time_day)+" HH:mm");
+                SimpleDateFormat sdf = new SimpleDateFormat("M"+ MyApp.getContext().getResources().getString(R.string.time_month)+"d"+ MyApp.getContext().getResources().getString(R.string.time_day)+" HH:mm");
                 return sdf.format(currenTimeZone);
             }else{
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy"+MyApplication.getContext().getResources().getString(R.string.time_year)+"MM"+MyApplication.getContext().getResources().getString(R.string.time_month)+"dd"+MyApplication.getContext().getResources().getString(R.string.time_day)+" HH:mm");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy"+ MyApp.getContext().getResources().getString(R.string.time_year)+"MM"+ MyApp.getContext().getResources().getString(R.string.time_month)+"dd"+ MyApp.getContext().getResources().getString(R.string.time_day)+" HH:mm");
                 return sdf.format(currenTimeZone);
             }
 

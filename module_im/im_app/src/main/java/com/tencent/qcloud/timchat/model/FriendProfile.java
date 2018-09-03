@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.tencent.imsdk.TIMUserProfile;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.ui.AddFriendActivity;
 import com.tencent.qcloud.timchat.ui.ProfileActivity;
@@ -107,7 +107,7 @@ public class FriendProfile implements ProfileSummary {
     public String getGroupName(){
 
         if (profile.getFriendGroups().size() == 0){
-            return MyApplication.getContext().getString(R.string.default_group_name);
+            return MyApp.getContext().getString(R.string.default_group_name);
         }else{
             return profile.getFriendGroups().get(0);
         }

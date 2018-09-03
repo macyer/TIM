@@ -4,7 +4,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
 
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -70,7 +70,7 @@ public class MediaUtil {
     }
 
     public long getDuration(String path){
-        player = MediaPlayer.create(MyApplication.getContext(), Uri.parse(path));
+        player = MediaPlayer.create(MyApp.getContext(), Uri.parse(path));
         return player.getDuration();
     }
 

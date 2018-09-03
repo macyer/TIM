@@ -18,7 +18,7 @@ import com.tencent.imsdk.TIMFaceElem;
 import com.tencent.imsdk.TIMMessage;
 import com.tencent.imsdk.TIMTextElem;
 import com.tencent.imsdk.ext.message.TIMMessageDraft;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.adapters.ChatAdapter;
 import com.tencent.qcloud.timchat.utils.EmoticonUtil;
@@ -112,9 +112,9 @@ public class TextMessage extends Message {
         clearView(viewHolder);
         if (checkRevoke(viewHolder)) return;
         boolean hasText = false;
-        TextView tv = new TextView(MyApplication.getContext());
+        TextView tv = new TextView(MyApp.getContext());
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-        tv.setTextColor(MyApplication.getContext().getResources().getColor(isSelf() ? R.color.white : R.color.black));
+        tv.setTextColor(MyApp.getContext().getResources().getColor(isSelf() ? R.color.white : R.color.black));
         List<TIMElem> elems = new ArrayList<>();
         for (int i = 0; i < message.getElementCount(); ++i){
             elems.add(message.getElement(i));

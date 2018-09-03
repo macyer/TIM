@@ -11,13 +11,12 @@ import com.tencent.imsdk.TIMConversationType;
 import com.tencent.imsdk.TIMGroupReceiveMessageOpt;
 import com.tencent.imsdk.TIMMessage;
 import com.tencent.qcloud.presentation.event.MessageEvent;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.model.CustomMessage;
 import com.tencent.qcloud.timchat.model.Message;
 import com.tencent.qcloud.timchat.model.MessageFactory;
 import com.tencent.qcloud.timchat.ui.ChatActivity;
-import com.tencent.qcloud.timchat.ui.HomeActivity;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -60,13 +59,13 @@ public class PushUtil implements Observer {
         senderStr = message.getSender();
         contentStr = message.getSummary();
         Log.d(TAG, "recv msg " + contentStr);
-        NotificationManager mNotificationManager = (NotificationManager) MyApplication.getContext().getSystemService(MyApplication.getContext().NOTIFICATION_SERVICE);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MyApplication.getContext());
+        NotificationManager mNotificationManager = (NotificationManager) MyApp.getContext().getSystemService(MyApp.getContext().NOTIFICATION_SERVICE);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MyApp.getContext());
 //        Intent notificationIntent = new Intent(MyApplication.getContext(), HomeActivity.class);
-        Intent notificationIntent = new Intent(MyApplication.getContext(), ChatActivity.class);
+        Intent notificationIntent = new Intent(MyApp.getContext(), ChatActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent intent = PendingIntent.getActivity(MyApplication.getContext(), 0,
+        PendingIntent intent = PendingIntent.getActivity(MyApp.getContext(), 0,
                 notificationIntent, 0);
         mBuilder.setContentTitle(senderStr)//设置通知栏标题
                 .setContentText(contentStr)
@@ -86,7 +85,7 @@ public class PushUtil implements Observer {
     }
 
     public void reset(){
-        NotificationManager notificationManager = (NotificationManager)MyApplication.getContext().getSystemService(MyApplication.getContext().NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) MyApp.getContext().getSystemService(MyApp.getContext().NOTIFICATION_SERVICE);
         notificationManager.cancel(pushId);
     }
 

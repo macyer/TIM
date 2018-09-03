@@ -3,7 +3,6 @@ package com.tencent.qcloud.timchat.utils;
 import android.media.MediaRecorder;
 import android.util.Log;
 
-import com.tencent.qcloud.timchat.MyApplication;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;

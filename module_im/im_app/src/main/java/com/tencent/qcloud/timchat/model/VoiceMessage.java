@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.TIMMessage;
 import com.tencent.imsdk.TIMSoundElem;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.adapters.ChatAdapter;
 import com.tencent.qcloud.timchat.utils.FileUtil;
@@ -57,16 +57,16 @@ public class VoiceMessage extends Message {
     @Override
     public void showMessage(ChatAdapter.ViewHolder viewHolder, Context context) {
         if (checkRevoke(viewHolder)) return;
-        LinearLayout linearLayout = new LinearLayout(MyApplication.getContext());
+        LinearLayout linearLayout = new LinearLayout(MyApp.getContext());
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
         linearLayout.setGravity(Gravity.CENTER);
-        ImageView voiceIcon = new ImageView(MyApplication.getContext());
+        ImageView voiceIcon = new ImageView(MyApp.getContext());
         voiceIcon.setBackgroundResource(message.isSelf()?R.drawable.right_voice: R.drawable.left_voice);
         final AnimationDrawable frameAnimatio = (AnimationDrawable) voiceIcon.getBackground();
 
-        TextView tv = new TextView(MyApplication.getContext());
+        TextView tv = new TextView(MyApp.getContext());
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-        tv.setTextColor(MyApplication.getContext().getResources().getColor(isSelf() ? R.color.white : R.color.black));
+        tv.setTextColor(MyApp.getContext().getResources().getColor(isSelf() ? R.color.white : R.color.black));
         tv.setText(String.valueOf(((TIMSoundElem) message.getElement(0)).getDuration()) + "’");
         int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, context.getResources().getDisplayMetrics());
         int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, context.getResources().getDisplayMetrics());
@@ -105,7 +105,7 @@ public class VoiceMessage extends Message {
     public String getSummary() {
         String str = getRevokeSummary();
         if (str != null) return str;
-        return MyApplication.getContext().getString(R.string.summary_voice);
+        return MyApp.getContext().getString(R.string.summary_voice);
     }
 
     /**

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.TIMFileElem;
 import com.tencent.imsdk.TIMMessage;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.adapters.ChatAdapter;
 import com.tencent.qcloud.timchat.utils.FileUtil;
@@ -46,9 +46,9 @@ public class FileMessage extends Message {
         clearView(viewHolder);
         if (checkRevoke(viewHolder)) return;
         TIMFileElem e = (TIMFileElem) message.getElement(0);
-        TextView tv = new TextView(MyApplication.getContext());
+        TextView tv = new TextView(MyApp.getContext());
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-        tv.setTextColor(MyApplication.getContext().getResources().getColor(isSelf() ? R.color.white : R.color.black));
+        tv.setTextColor(MyApp.getContext().getResources().getColor(isSelf() ? R.color.white : R.color.black));
         tv.setText(e.getFileName());
         getBubbleView(viewHolder).addView(tv);
         showStatus(viewHolder);
@@ -61,7 +61,7 @@ public class FileMessage extends Message {
     public String getSummary() {
         String str = getRevokeSummary();
         if (str != null) return str;
-        return MyApplication.getContext().getString(R.string.summary_file);
+        return MyApp.getContext().getString(R.string.summary_file);
     }
 
     /**
@@ -74,7 +74,7 @@ public class FileMessage extends Message {
         String[] str = e.getFileName().split("/");
         String filename = str[str.length-1];
         if (FileUtil.isFileExist(filename, Environment.DIRECTORY_DOWNLOADS)) {
-            Toast.makeText(MyApplication.getContext(), MyApplication.getContext().getString(R.string.save_exist),Toast.LENGTH_SHORT).show();
+            Toast.makeText(MyApp.getContext(), MyApp.getContext().getString(R.string.save_exist),Toast.LENGTH_SHORT).show();
             return;
         }
 

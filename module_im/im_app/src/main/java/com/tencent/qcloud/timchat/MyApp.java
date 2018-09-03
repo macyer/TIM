@@ -14,22 +14,20 @@ import com.tencent.qcloud.timchat.utils.Foreground;
 /**
  * 全局Application
  */
-public class MyApplication extends Application {
+public class MyApp {
 
-    private static Context context;
+    private static Context mContext;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Foreground.init(this);
-        context = getApplicationContext();
-        if(MsfSdkUtils.isMainProcess(this)) {
+    public static void init(Context context) {
+        Foreground.init((Application) context);
+        mContext = context;
+        if(MsfSdkUtils.isMainProcess(mContext)) {
             TIMManager.getInstance().setOfflinePushListener(new TIMOfflinePushListener() {
                 @Override
                 public void handleNotification(TIMOfflinePushNotification notification) {
                     if (notification.getGroupReceiveMsgOpt() == TIMGroupReceiveMessageOpt.ReceiveAndNotify){
                         //消息被设置为需要提醒
-                        notification.doNotify(getApplicationContext(), R.mipmap.ic_launcher);
+                        notification.doNotify(mContext, R.mipmap.ic_launcher);
                     }
                 }
             });
@@ -37,7 +35,7 @@ public class MyApplication extends Application {
     }
 
     public static Context getContext() {
-        return context;
+        return mContext;
     }
 
 

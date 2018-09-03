@@ -7,7 +7,7 @@ import android.util.Log;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.ext.group.TIMGroupPendencyItem;
 import com.tencent.qcloud.presentation.presenter.GroupManagerPresenter;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.ui.GroupManageMessageActivity;
 
@@ -98,31 +98,31 @@ public class GroupManageConversation extends Conversation {
         switch (lastMessage.getPendencyType()){
             case INVITED_BY_OTHER:
                 if (isSelf){
-                    return MyApplication.getContext().getResources().getString(R.string.summary_me)+
-                            MyApplication.getContext().getResources().getString(R.string.summary_group_invite)+
+                    return MyApp.getContext().getResources().getString(R.string.summary_me)+
+                            MyApp.getContext().getResources().getString(R.string.summary_group_invite)+
                             to+
-                            MyApplication.getContext().getResources().getString(R.string.summary_group_add);
+                            MyApp.getContext().getResources().getString(R.string.summary_group_add);
                 }else{
                     if (to.equals(UserInfo.getInstance().getId())){
                         return from+
-                                MyApplication.getContext().getResources().getString(R.string.summary_group_invite)+
-                                MyApplication.getContext().getResources().getString(R.string.summary_me)+
-                                MyApplication.getContext().getResources().getString(R.string.summary_group_add);
+                                MyApp.getContext().getResources().getString(R.string.summary_group_invite)+
+                                MyApp.getContext().getResources().getString(R.string.summary_me)+
+                                MyApp.getContext().getResources().getString(R.string.summary_group_add);
                     }else{
                         return from+
-                                MyApplication.getContext().getResources().getString(R.string.summary_group_invite)+
+                                MyApp.getContext().getResources().getString(R.string.summary_group_invite)+
                                 to+
-                                MyApplication.getContext().getResources().getString(R.string.summary_group_add);
+                                MyApp.getContext().getResources().getString(R.string.summary_group_add);
                     }
 
                 }
             case APPLY_BY_SELF:
                 if (isSelf){
-                    return MyApplication.getContext().getResources().getString(R.string.summary_me)+
-                            MyApplication.getContext().getResources().getString(R.string.summary_group_apply)+
+                    return MyApp.getContext().getResources().getString(R.string.summary_me)+
+                            MyApp.getContext().getResources().getString(R.string.summary_group_apply)+
                             GroupInfo.getInstance().getGroupName(lastMessage.getGroupId());
                 }else{
-                    return from+MyApplication.getContext().getResources().getString(R.string.summary_group_apply)+GroupInfo.getInstance().getGroupName(lastMessage.getGroupId());
+                    return from+ MyApp.getContext().getResources().getString(R.string.summary_group_apply)+GroupInfo.getInstance().getGroupName(lastMessage.getGroupId());
                 }
 
             default:
@@ -135,7 +135,7 @@ public class GroupManageConversation extends Conversation {
      */
     @Override
     public String getName() {
-        return MyApplication.getContext().getString(R.string.conversation_system_group);
+        return MyApp.getContext().getString(R.string.conversation_system_group);
     }
 
 

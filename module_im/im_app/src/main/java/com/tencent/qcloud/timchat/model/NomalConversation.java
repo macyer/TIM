@@ -5,7 +5,7 @@ import android.content.Context;
 import com.tencent.imsdk.TIMConversation;
 import com.tencent.imsdk.TIMConversationType;
 import com.tencent.imsdk.ext.message.TIMConversationExt;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.ui.ChatActivity;
 
@@ -65,7 +65,7 @@ public class NomalConversation extends Conversation {
         if (ext.hasDraft()){
             TextMessage textMessage = new TextMessage(ext.getDraft());
             if (lastMessage == null || lastMessage.getMessage().timestamp() < ext.getDraft().getTimestamp()){
-                return MyApplication.getContext().getString(R.string.conversation_draft) + textMessage.getSummary();
+                return MyApp.getContext().getString(R.string.conversation_draft) + textMessage.getSummary();
             }else{
                 return lastMessage.getSummary();
             }

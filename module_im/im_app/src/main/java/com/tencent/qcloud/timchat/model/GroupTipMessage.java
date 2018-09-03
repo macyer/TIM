@@ -6,7 +6,7 @@ import android.view.View;
 import com.tencent.imsdk.TIMGroupMemberInfo;
 import com.tencent.imsdk.TIMGroupTipsElem;
 import com.tencent.imsdk.TIMMessage;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.adapters.ChatAdapter;
 
@@ -49,7 +49,7 @@ public class GroupTipMessage extends Message {
         switch (e.getTipsType()){
             case CancelAdmin:
             case SetAdmin:
-                return MyApplication.getContext().getString(R.string.summary_group_admin_change);
+                return MyApp.getContext().getString(R.string.summary_group_admin_change);
             case Join:
                 while(iterator.hasNext()){
                     Map.Entry<String,TIMGroupMemberInfo> item = iterator.next();
@@ -57,10 +57,10 @@ public class GroupTipMessage extends Message {
                     stringBuilder.append(" ");
                 }
                 return stringBuilder +
-                        MyApplication.getContext().getString(R.string.summary_group_mem_add);
+                        MyApp.getContext().getString(R.string.summary_group_mem_add);
             case Kick:
                 return e.getUserList().get(0) +
-                        MyApplication.getContext().getString(R.string.summary_group_mem_kick);
+                        MyApp.getContext().getString(R.string.summary_group_mem_kick);
             case ModifyMemberInfo:
                 while(iterator.hasNext()){
                     Map.Entry<String,TIMGroupMemberInfo> item = iterator.next();
@@ -68,12 +68,12 @@ public class GroupTipMessage extends Message {
                     stringBuilder.append(" ");
                 }
                 return stringBuilder +
-                        MyApplication.getContext().getString(R.string.summary_group_mem_modify);
+                        MyApp.getContext().getString(R.string.summary_group_mem_modify);
             case Quit:
                 return e.getOpUser() +
-                        MyApplication.getContext().getString(R.string.summary_group_mem_quit);
+                        MyApp.getContext().getString(R.string.summary_group_mem_quit);
             case ModifyGroupInfo:
-                return MyApplication.getContext().getString(R.string.summary_group_info_change);
+                return MyApp.getContext().getString(R.string.summary_group_info_change);
         }
         return "";
     }

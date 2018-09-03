@@ -15,7 +15,7 @@ import com.tencent.imsdk.TIMMessage;
 import com.tencent.imsdk.TIMSnapshot;
 import com.tencent.imsdk.TIMVideo;
 import com.tencent.imsdk.TIMVideoElem;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.adapters.ChatAdapter;
 import com.tencent.qcloud.timchat.ui.VideoActivity;
@@ -144,7 +144,7 @@ public class VideoMessage extends Message {
     public String getSummary() {
         String str = getRevokeSummary();
         if (str != null) return str;
-        return MyApplication.getContext().getString(R.string.summary_video);
+        return MyApp.getContext().getString(R.string.summary_video);
     }
 
     /**
@@ -161,7 +161,7 @@ public class VideoMessage extends Message {
      */
     private void showSnapshot(final ChatAdapter.ViewHolder viewHolder,final Bitmap bitmap){
         if (bitmap == null) return;
-        ImageView imageView = new ImageView(MyApplication.getContext());
+        ImageView imageView = new ImageView(MyApp.getContext());
         imageView.setImageBitmap(bitmap);
         getBubbleView(viewHolder).addView(imageView);
     }

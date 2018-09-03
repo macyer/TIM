@@ -16,7 +16,7 @@ import com.tencent.imsdk.TIMImage;
 import com.tencent.imsdk.TIMImageElem;
 import com.tencent.imsdk.TIMImageType;
 import com.tencent.imsdk.TIMMessage;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.adapters.ChatAdapter;
 import com.tencent.qcloud.timchat.ui.ImageViewActivity;
@@ -70,7 +70,7 @@ public class ImageMessage extends Message {
         switch (message.status()){
             case Sending:
 
-                ImageView imageView = new ImageView(MyApplication.getContext());
+                ImageView imageView = new ImageView(MyApp.getContext());
                 imageView.setImageBitmap(getThumb(e.getPath()));
                 clearView(viewHolder);
                 getBubbleView(viewHolder).addView(imageView);
@@ -122,7 +122,7 @@ public class ImageMessage extends Message {
     public String getSummary() {
         String str = getRevokeSummary();
         if (str != null) return str;
-        return MyApplication.getContext().getString(R.string.summary_image);
+        return MyApp.getContext().getString(R.string.summary_image);
     }
 
     /**
@@ -135,7 +135,7 @@ public class ImageMessage extends Message {
             if (image.getType() == TIMImageType.Original) {
                 final String uuid = image.getUuid();
                 if (FileUtil.isCacheFileExist(uuid+".jpg")) {
-                    Toast.makeText(MyApplication.getContext(), MyApplication.getContext().getString(R.string.save_exist),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyApp.getContext(), MyApp.getContext().getString(R.string.save_exist),Toast.LENGTH_SHORT).show();
                     return;
                 }
                 image.getImage(FileUtil.getCacheFilePath(uuid+".jpg"), new TIMCallBack() {
@@ -146,7 +146,7 @@ public class ImageMessage extends Message {
 
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(MyApplication.getContext(), MyApplication.getContext().getString(R.string.save_succ), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MyApp.getContext(), MyApp.getContext().getString(R.string.save_succ), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -202,7 +202,7 @@ public class ImageMessage extends Message {
 
     private void showThumb(final ChatAdapter.ViewHolder viewHolder,String filename){
         Bitmap bitmap = BitmapFactory.decodeFile(FileUtil.getCacheFilePath(filename));
-        ImageView imageView = new ImageView(MyApplication.getContext());
+        ImageView imageView = new ImageView(MyApp.getContext());
         imageView.setImageBitmap(bitmap);
         getBubbleView(viewHolder).addView(imageView);
     }
@@ -223,7 +223,7 @@ public class ImageMessage extends Message {
             String path = FileUtil.getCacheFilePath(image.getUuid());
             File file = new File(path);
             if (file.length() < image.getSize()) {
-                Toast.makeText(context, MyApplication.getContext().getString(R.string.downloading), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, MyApp.getContext().getString(R.string.downloading), Toast.LENGTH_SHORT).show();
                 return;
             }
             Intent intent = new Intent(context, ImageViewActivity.class);
@@ -238,7 +238,7 @@ public class ImageMessage extends Message {
                         //错误码code和错误描述desc，可用于定位请求失败原因
                         //错误码code含义请参见错误码表
                         Log.e(TAG, "getImage failed. code: " + i + " errmsg: " + s);
-                        Toast.makeText(context, MyApplication.getContext().getString(R.string.download_fail), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, MyApp.getContext().getString(R.string.download_fail), Toast.LENGTH_SHORT).show();
                         isDownloading = false;
                     }
 
@@ -251,7 +251,7 @@ public class ImageMessage extends Message {
                     }
                 });
             }else{
-                Toast.makeText(context, MyApplication.getContext().getString(R.string.downloading), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, MyApp.getContext().getString(R.string.downloading), Toast.LENGTH_SHORT).show();
             }
         }
     }

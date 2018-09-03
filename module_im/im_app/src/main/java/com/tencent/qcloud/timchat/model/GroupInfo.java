@@ -7,7 +7,7 @@ import com.tencent.imsdk.ext.group.TIMGroupAssistant;
 import com.tencent.imsdk.ext.group.TIMGroupCacheInfo;
 import com.tencent.qcloud.presentation.event.GroupEvent;
 import com.tencent.qcloud.presentation.event.RefreshEvent;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 
 import java.util.ArrayList;
@@ -180,11 +180,11 @@ public class GroupInfo implements Observer {
 
     public static String getTypeName(String type){
         if (type.equals(GroupInfo.publicGroup)){
-            return MyApplication.getContext().getString(R.string.public_group);
+            return MyApp.getContext().getString(R.string.public_group);
         }else if (type.equals(GroupInfo.privateGroup)){
-            return MyApplication.getContext().getString(R.string.discuss_group);
+            return MyApp.getContext().getString(R.string.discuss_group);
         }else if (type.equals(GroupInfo.chatRoom)){
-            return MyApplication.getContext().getString(R.string.chatroom);
+            return MyApp.getContext().getString(R.string.chatroom);
         }
         return "";
     }

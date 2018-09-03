@@ -4,31 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.ThumbnailUtils;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.TIMMessage;
-import com.tencent.imsdk.TIMSnapshot;
-import com.tencent.imsdk.TIMVideo;
-import com.tencent.imsdk.TIMVideoElem;
 import com.tencent.imsdk.ext.ugc.TIMUGCCover;
 import com.tencent.imsdk.ext.ugc.TIMUGCElem;
 import com.tencent.imsdk.ext.ugc.TIMUGCVideo;
-import com.tencent.imsdk.log.QLog;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.adapters.ChatAdapter;
 import com.tencent.qcloud.timchat.ui.VideoActivity;
 import com.tencent.qcloud.timchat.utils.FileUtil;
-import com.tencent.qcloud.timchat.utils.MediaUtil;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * 小视频消息
@@ -134,7 +125,7 @@ public class UGCMessage extends Message{
     public String getSummary() {
         String str = getRevokeSummary();
         if (str != null) return str;
-        return MyApplication.getContext().getString(R.string.summary_video);
+        return MyApp.getContext().getString(R.string.summary_video);
     }
 
     /**
@@ -151,7 +142,7 @@ public class UGCMessage extends Message{
      */
     private void showSnapshot(final ChatAdapter.ViewHolder viewHolder,final Bitmap bitmap){
         if (bitmap == null) return;
-        ImageView imageView = new ImageView(MyApplication.getContext());
+        ImageView imageView = new ImageView(MyApp.getContext());
         imageView.setImageBitmap(bitmap);
         getBubbleView(viewHolder).addView(imageView);
     }

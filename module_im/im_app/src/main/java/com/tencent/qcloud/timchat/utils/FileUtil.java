@@ -1,7 +1,6 @@
 package com.tencent.qcloud.timchat.utils;
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
@@ -12,9 +11,8 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.webkit.MimeTypeMap;
 
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -28,7 +26,7 @@ public class FileUtil {
 
     private static final String TAG = "FileUtil";
     private static String pathDiv = "/";
-    private static File cacheDir = !isExternalStorageWritable()?MyApplication.getContext().getFilesDir(): MyApplication.getContext().getExternalCacheDir();
+    private static File cacheDir = !isExternalStorageWritable()? MyApp.getContext().getFilesDir(): MyApp.getContext().getExternalCacheDir();
 
     private FileUtil() {
         /* cannot be instantiated */
@@ -120,7 +118,7 @@ public class FileUtil {
      */
     public static boolean isFileExist(String fileName, String type){
         if (isExternalStorageWritable()){
-            File dir = MyApplication.getContext().getExternalFilesDir(type);
+            File dir = MyApp.getContext().getExternalFilesDir(type);
             if (dir != null){
                 File f = new File(dir, fileName);
                 return f.exists();
@@ -139,7 +137,7 @@ public class FileUtil {
      */
     public static File createFile(byte[] data, String fileName, String type){
         if (isExternalStorageWritable()){
-            File dir = MyApplication.getContext().getExternalFilesDir(type);
+            File dir = MyApp.getContext().getExternalFilesDir(type);
             if (dir != null){
                 File f = new File(dir, fileName);
                 try{

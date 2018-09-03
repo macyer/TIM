@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.tencent.imsdk.ext.sns.TIMFriendFutureItem;
-import com.tencent.qcloud.timchat.MyApplication;
+import com.tencent.qcloud.timchat.MyApp;
 import com.tencent.qcloud.timchat.R;
 import com.tencent.qcloud.timchat.ui.FriendshipManageMessageActivity;
 
@@ -76,13 +76,13 @@ public class FriendshipConversation extends Conversation {
         if (name.equals("")) name = lastMessage.getIdentifier();
         switch (lastMessage.getType()){
             case TIM_FUTURE_FRIEND_PENDENCY_IN_TYPE://我收到的好友申请的未决消息
-                return name + MyApplication.getContext().getString(R.string.summary_friend_add);
+                return name + MyApp.getContext().getString(R.string.summary_friend_add);
             case TIM_FUTURE_FRIEND_PENDENCY_OUT_TYPE://我发出的好友申请的未决消息
-                return MyApplication.getContext().getString(R.string.summary_me) + MyApplication.getContext().getString(R.string.summary_friend_add_me) + name;
+                return MyApp.getContext().getString(R.string.summary_me) + MyApp.getContext().getString(R.string.summary_friend_add_me) + name;
             case TIM_FUTURE_FRIEND_DECIDE_TYPE://已决消息
-                return MyApplication.getContext().getString(R.string.summary_friend_added) + name;
+                return MyApp.getContext().getString(R.string.summary_friend_added) + name;
             case TIM_FUTURE_FRIEND_RECOMMEND_TYPE://好友推荐
-                return MyApplication.getContext().getString(R.string.summary_friend_recommend) + name;
+                return MyApp.getContext().getString(R.string.summary_friend_recommend) + name;
             default:
                 return "";
         }
@@ -93,7 +93,7 @@ public class FriendshipConversation extends Conversation {
      */
     @Override
     public String getName() {
-        return MyApplication.getContext().getString(R.string.conversation_system_friend);
+        return MyApp.getContext().getString(R.string.conversation_system_friend);
 
     }
 
